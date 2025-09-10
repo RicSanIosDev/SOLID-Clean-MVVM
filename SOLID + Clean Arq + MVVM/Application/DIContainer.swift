@@ -7,7 +7,6 @@
 
 import UIKit
 
-// El Composition Root. Aquí se crean todas las dependencias.
 class DIContainer {
     // MARK: - Data Layer
     private lazy var apiClient = APIClient()
@@ -21,7 +20,6 @@ class DIContainer {
         return UsersCoordinator(navigationController: navigationController, diContainer: self)
     }
 
-    // Factory para el ViewModel
     func makeUsersViewModel(coordinator: UsersCoordinator) -> UsersViewModel {
         return UsersViewModel(getUsersUseCase: getUsersUseCase, coordinator: coordinator)
     }
