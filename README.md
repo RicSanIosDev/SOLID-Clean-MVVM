@@ -1,10 +1,3 @@
-//
-//  README.md
-//  SOLID + Clean Arq + MVVM
-//
-//  Created by ricardo sanchez on 10/9/25.
-//
-
 # iOS Clean Architecture + SOLID + MVVM
 
 This project serves as a boilerplate and a practical example for building scalable, testable, and maintainable iOS applications using UIKit. Its primary purpose is to demonstrate the implementation of the following design principles and patterns:
@@ -55,11 +48,37 @@ The **`DIContainer`** acts as the **Composition Root**, a centralized place wher
 
 ## Project Structure
 
-├── Application/ // App entry point and global configuration
-├── Domain/ // Business logic and models
-├── Data/ // Data source implementation
-└── Presentation/ // UI Layer (Coordinators, Views, ViewModels)
-└── Core/ // Base protocols and classes for the UI
+├── 📂 Application/
+│ ├── 📜 AppDelegate.swift # Handles app lifecycle events
+│ └── 📜 DIContainer.swift # Composition Root: builds and injects dependencies
+│
+├── 📂 Data/
+│ ├── 📂 Network/
+│ │ └── 📜 APIClient.swift # Generic network client for API requests
+│ └── 📂 Repositories/
+│ └── 📜 APIUserRepository.swift # Concrete implementation of UserRepository
+│
+├── 📂 Domain/
+│ ├── 📂 Entities/
+│ │ └── 📜 User.swift # Pure data model
+│ ├── 📂 Repositories/
+│ │ └── 📜 UserRepository.swift # Repository protocol (the contract)
+│ └── 📂 UseCases/
+│ └── 📜 GetUsersUseCase.swift # Single business action
+│
+├── 📂 Presentation/
+| |── 📂 Core/
+│ └── 📜 Coordinator.swift # Base protocol for all coordinators
+│ └── 📂 Users/
+│ ├── 📂 Coordinator/
+│ │ └── 📜 UsersCoordinator.swift
+│ ├── 📂 View/
+│ │ └── 📜 UsersViewController.swift
+│ └── 📂 ViewModel/
+│ └── 📜 UsersViewModel.swift
+│
+└── 📂 Theme/
+└── 📜 NavigationAppearance.swift # Global appearance setup for UINavigationBar
 
 ## Getting Started
 
