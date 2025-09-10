@@ -18,15 +18,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: windowScene)
 
-//        NavigationAppearance.configure()
+        NavigationAppearance.configure()
 
         let navigationController = UINavigationController()
         mainCoordinator = diContainer.makeUsersCoordinator(navigationController: navigationController)
         mainCoordinator?.start()
 
-        let vc = UIViewController()
-        vc.view.backgroundColor = .red
-        window.rootViewController = vc
+        window.rootViewController = navigationController
         self.window = window
         window.makeKeyAndVisible()
     }

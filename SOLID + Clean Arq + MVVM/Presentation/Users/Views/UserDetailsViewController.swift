@@ -10,6 +10,15 @@ import UIKit
 class UserDetailsViewController: UIViewController {
     private let viewModel: UserDetailsViewModel
 
+    private lazy var ticketView: TicketView = {
+        let view = TicketView()
+        view.backgroundColor = .clear
+        view.bcolor = .systemGray
+        view.dashColor = .black
+        view.createMask = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     private let nameLabel = UILabel()
     private let emailLabel = UILabel()
 
@@ -46,11 +55,41 @@ class UserDetailsViewController: UIViewController {
         stackView.spacing = 8
         stackView.translatesAutoresizingMaskIntoConstraints = false
 
-        view.addSubview(stackView)
+        ticketView.addSubview(stackView)
+        view.addSubview(ticketView)
 
-        NSLayoutConstraint.activate([
-            stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
+        NSLayoutConstraint
+            .activate(
+                [
+                    stackView.centerXAnchor
+                        .constraint(
+                            equalTo: ticketView.centerXAnchor
+                        ),
+                    stackView.topAnchor
+                        .constraint(
+                            equalTo: ticketView.topAnchor,
+                            constant: 32
+                        ),
+                    ticketView.bottomAnchor
+                        .constraint(
+                            equalTo: stackView.bottomAnchor,
+                            constant: 32
+                        ),
+                    ticketView.leadingAnchor
+                        .constraint(
+                            equalTo: view.leadingAnchor,
+                            constant: 16
+                        ),
+                    view.trailingAnchor
+                        .constraint(
+                            equalTo: ticketView.trailingAnchor,
+                            constant: 16
+                        ),
+                    ticketView.centerYAnchor
+                        .constraint(
+                            equalTo: view.centerYAnchor
+                        ),
+                ]
+            )
     }
 }
